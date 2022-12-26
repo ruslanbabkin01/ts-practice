@@ -1,6 +1,6 @@
 // Є функція, яка повертає Promise, він повертає масив рядків і чисел, опишіть правильно тип.
-// function getPromise () {
-//   return new Promise((resolve) => {
+// function getPromise (): Promise <Array<string | number>> {
+//    return new Promise((resolve) => {
 //     resolve(['Text', 50]);
 //   });
 // }
@@ -11,17 +11,16 @@
 // });
 
 // У вас є наступний тип даних
+type AllType = {
+  name: string;
+  position: number;
+  color: string;
+  weight: number
+}
 
-// type AllType = {
-//   name: string;
-//   position: number;
-//   color: string;
-//   weight: number
-// }
-
-// Є функція, вона приймає два аргументи, в один потрапляє name і color, в іншу частину - position і weight. Потрібно явно вказати, що ці поля з AllType. І сама функція повертає AllType. Скористайтеся Pick.
-
-// function compare (top, bottom): AllType {
+// Є функція, вона приймає два аргументи, в один потрапляє name і color, в іншу частину - position і weight. 
+// Потрібно явно вказати, що ці поля з AllType.І сама функція повертає AllType.Скористайтеся Pick.
+// function compare(top: Pick<AllType, 'name' | 'color'>, bottom: Pick<AllType, 'position' | 'weight'>): AllType {
 //   return {
 //     name: top.name,
 //     color: top.color,
@@ -31,24 +30,23 @@
 // }
 
 // Вкажіть дженерики для функції об'єднання об'єктів.
-
-// function merge (objA, objB) {
+// function merge<T extends object,U extends object> (objA: T, objB: U) {
 //   return Object.assign(objA, objB);
 // }
 
-
 // У вас є наступні класи
-
-// class Component {
+// Тільки додаючи дженерики для класів та інтерфейс, приберіть помилку.
+// class Component <T>{
 //   constructor (public props:T) {
 
 //   }
 // }
+// interface IProps{
+//   title: string
+// }
 
-// class Page extends Component {
+// class Page extends Component<IProps> {
 //   pageInfo () {
 //     console.log(this.props.title);
 //   }
 // }
-
-// Тільки додаючи дженерики для класів та інтерфейс, приберіть помилку.
